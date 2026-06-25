@@ -58,6 +58,39 @@
             margin-right: auto;
         }
 
+        /* ---------- NAVIGATION (NEW) ---------- */
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: 0.3s;
+            padding: 6px 14px;
+            border-radius: 8px;
+            background: #1e293b;
+            border: 1px solid #334155;
+        }
+
+        .nav-links a:hover {
+            color: #f1f5f9;
+            border-color: #8b5cf6;
+            background: #0f172a;
+        }
+
+        .nav-links a.active {
+            color: #f1f5f9;
+            border-color: #8b5cf6;
+            background: #0f172a;
+        }
+
         /* ---------- TOOLS GRID ---------- */
         .tools-grid {
             display: grid;
@@ -147,14 +180,26 @@
             color: #fff;
         }
 
+        .tool-card.pass::before {
+            background: #3b82f6;
+        }
+
         .tool-card.bmi .tool-tag {
             background: #22c55e;
             color: #fff;
         }
 
+        .tool-card.bmi::before {
+            background: #22c55e;
+        }
+
         .tool-card.word .tool-tag {
             background: #8b5cf6;
             color: #fff;
+        }
+
+        .tool-card.word::before {
+            background: #8b5cf6;
         }
 
         /* Card hover arrow */
@@ -212,6 +257,7 @@
         .footer a {
             color: #64748b;
             text-decoration: none;
+            margin: 0 10px;
             transition: 0.3s;
         }
 
@@ -262,6 +308,15 @@
                 grid-template-columns: 1fr;
                 gap: 12px;
             }
+
+            .nav-links {
+                gap: 10px;
+            }
+
+            .nav-links a {
+                font-size: 13px;
+                padding: 4px 10px;
+            }
         }
     </style>
 </head>
@@ -275,12 +330,25 @@
                 🛠️ Free <span>Tools</span>
             </h1>
             <p>Fast, secure, and free online tools for everyone. No sign-up required.</p>
+
+            <!-- ============================================================ -->
+            <!-- NAVIGATION LINKS (NEW) -->
+            <!-- ============================================================ -->
+            <div class="nav-links">
+                <a href="index.html" class="active">🏠 Home</a>
+                <a href="blog.html">📝 Blog</a>
+                <a href="about.html">ℹ️ About</a>
+                <a href="contact.html">📬 Contact</a>
+            </div>
         </div>
 
-        <!-- TOOLS GRID -->
+        <!-- ============================================================ -->
+        <!-- TOOLS GRID — 3 TOOLS WITH CORRECT LINKS -->
+        <!-- ============================================================ -->
         <div class="tools-grid">
 
             <!-- TOOL 1: Password Generator -->
+            <!-- ✅ LINK: password-generator.html -->
             <a href="password-generator.html" class="tool-card pass">
                 <span class="tool-icon">🔐</span>
                 <h2>Password Generator</h2>
@@ -290,6 +358,7 @@
             </a>
 
             <!-- TOOL 2: BMI Calculator -->
+            <!-- ✅ LINK: bmi-calculator.html -->
             <a href="bmi-calculator.html" class="tool-card bmi">
                 <span class="tool-icon">⚖️</span>
                 <h2>BMI Calculator</h2>
@@ -299,6 +368,7 @@
             </a>
 
             <!-- TOOL 3: Word Counter -->
+            <!-- ✅ LINK: word-counter.html -->
             <a href="word-counter.html" class="tool-card word">
                 <span class="tool-icon">📝</span>
                 <h2>Word Counter</h2>
@@ -330,7 +400,11 @@
 
         <!-- FOOTER -->
         <div class="footer">
-            Made with ❤️ &bull; Free Online Tools
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="blog.html">Blog</a>
         </div>
 
     </div>
