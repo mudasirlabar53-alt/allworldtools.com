@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us — Free Online Tools</title>
+    <meta name="description" content="Learn about our mission to provide free, secure, and easy-to-use online tools for everyone." />
+    <style>
+        /* ---------- RESET & BASE ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(145deg, #0b1120 0%, #1a2332 100%);
+            min-height: 100vh;
+            padding: 30px 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #1e293b;
+            padding: 50px 40px;
+            border-radius: 28px;
+            border: 1px solid #334155;
+            box-shadow: 0 25px 50px -8px rgba(0, 0, 0, 0.8);
+        }
+
+        /* ---------- BACK BUTTON ---------- */
+        .back-link {
+            display: inline-block;
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 14px;
+            margin-bottom: 30px;
+            transition: 0.3s;
+        }
+
+        .back-link:hover {
+            color: #f1f5f9;
+            transform: translateX(-4px);
+        }
+
+        /* ---------- HEADER ---------- */
+        h1 {
+            color: #f1f5f9;
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        h1 span {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            padding: 4px 16px;
+            border-radius: 14px;
+            color: #fff;
+            font-size: 28px;
+        }
+
+        .subtitle {
+            color: #94a3b8;
+            font-size: 16px;
+            margin-bottom: 32px;
+            border-left: 4px solid #8b5cf6;
+            padding-left: 16px;
+        }
+
+        /* ---------- CONTENT ---------- */
+        .content h2 {
+            color: #e2e8f0;
+            font-size: 22px;
+            margin-top: 28px;
+            margin-bottom: 12px;
+        }
+
+        .content h2:first-of-type {
+            margin-top: 0;
+        }
+
+        .content p {
+            color: #cbd5e1;
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+
+        .content ul {
+            color: #cbd5e1;
+            font-size: 16px;
+            line-height: 2;
+            padding-left: 24px;
+            margin-bottom: 20px;
+        }
+
+        .content ul li::marker {
+            color: #8b5cf6;
+        }
+
+        /* ---------- MISSION BOX ---------- */
+        .mission-box {
+            background: #0f172a;
+            border-radius: 16px;
+            padding: 24px 28px;
+            border-left: 4px solid #8b5cf6;
+            margin: 24px 0;
+        }
+
+        .mission-box p {
+            color: #e2e8f0;
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 0;
+        }
+
+        /* ---------- VALUES GRID ---------- */
+        .values-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 16px;
+            margin: 20px 0;
+        }
+
+        .value-item {
+            background: #0f172a;
+            padding: 20px 16px;
+            border-radius: 14px;
+            border: 1px solid #334155;
+            text-align: center;
+        }
+
+        .value-item .icon {
+            font-size: 32px;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .value-item h3 {
+            color: #e2e8f0;
+            font-size: 15px;
+            margin-bottom: 4px;
+        }
+
+        .value-item p {
+            color: #94a3b8;
+            font-size: 13px;
+            margin-bottom: 0;
+            line-height: 1.4;
+        }
+
+        /* ---------- FOOTER ---------- */
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            color: #475569;
+            font-size: 13px;
+            border-top: 1px solid #1e293b;
+            padding-top: 24px;
+        }
+
+        .footer a {
+            color: #64748b;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: 0.3s;
+        }
+
+        .footer a:hover {
+            color: #94a3b8;
+        }
+
+        /* ---------- RESPONSIVE ---------- */
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            h1 span {
+                font-size: 22px;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .content p {
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- BACK BUTTON -->
+        <a href="index.html" class="back-link">← Back to Tools</a>
+
+        <!-- HEADER -->
+        <h1>
+            About <span>Us</span>
+        </h1>
+        <div class="subtitle">Our mission is to make your life easier — one tool at a time.</div>
+
+        <!-- CONTENT -->
+        <div class="content">
+
+            <h2>🙋 Who We Are</h2>
+            <p>
+                We are a small team of developers and designers who believe that
+                <strong>everyone should have access to free, fast, and secure online tools</strong>.
+                No sign-ups, no hidden charges, no data collection — just tools that work.
+            </p>
+
+            <h2>🎯 Our Mission</h2>
+            <p>
+                Our mission is simple: to create <strong>high-quality online tools</strong>
+                that help people in their daily lives. Whether you need a strong password,
+                want to check your BMI, or need to count words in an essay —
+                we've got you covered.
+            </p>
+
+            <!-- MISSION BOX -->
+            <div class="mission-box">
+                <p>
+                    💡 "Making the internet more useful, one tool at a time."
+                </p>
+            </div>
+
+            <h2>⭐ Our Values</h2>
+            <div class="values-grid">
+                <div class="value-item">
+                    <span class="icon">🔒</span>
+                    <h3>Privacy</h3>
+                    <p>We never store your data. What happens on our tools stays on your device.</p>
+                </div>
+                <div class="value-item">
+                    <span class="icon">⚡</span>
+                    <h3>Speed</h3>
+                    <p>All tools are optimized for fast performance. No waiting.</p>
+                </div>
+                <div class="value-item">
+                    <span class="icon">📱</span>
+                    <h3>Accessibility</h3>
+                    <p>Works on all devices — phone, tablet, laptop, or desktop.</p>
+                </div>
+            </div>
+
+            <h2>🛠️ Our Tools</h2>
+            <p>
+                Currently, we offer <strong>3 free tools</strong>, with more coming soon:
+            </p>
+            <ul>
+                <li><strong>Password Generator</strong> — Create strong, secure passwords instantly</li>
+                <li><strong>BMI Calculator</strong> — Check your body mass index and health category</li>
+                <li><strong>Word Counter</strong> — Count words, characters, sentences, and reading time</li>
+            </ul>
+
+            <h2>📬 Get In Touch</h2>
+            <p>
+                Have a suggestion? Found a bug? Want to request a new tool?
+                We'd love to hear from you! Head over to our
+                <a href="contact.html" style="color: #8b5cf6; text-decoration: none; font-weight: 600;">Contact Page</a>
+                and drop us a message.
+            </p>
+
+            <p style="color: #64748b; font-size: 15px; margin-top: 8px;">
+                Thank you for using our tools! ❤️
+            </p>
+
+        </div>
+
+        <!-- FOOTER -->
+        <div class="footer">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="privacy-policy.html">Privacy Policy</a>
+        </div>
+
+    </div>
+
+</body>
+</html>
