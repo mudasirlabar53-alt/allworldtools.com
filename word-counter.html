@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Word Counter — Free Online Word & Character Counter</title>
+    <meta name="description" content="Count words, characters, sentences, and paragraphs instantly. Free online word counter tool for students, writers, and content creators." />
+    <style>
+        /* ---------- RESET & BASE ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(145deg, #0b1120 0%, #1a2332 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        /* ---------- CARD ---------- */
+        .container {
+            background: #1e293b;
+            padding: 40px 35px;
+            border-radius: 28px;
+            max-width: 620px;
+            width: 100%;
+            box-shadow: 0 25px 50px -8px rgba(0, 0, 0, 0.8);
+            border: 1px solid #334155;
+        }
+
+        h1 {
+            color: #f1f5f9;
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h1 span {
+            background: #8b5cf6;
+            font-size: 20px;
+            padding: 2px 12px;
+            border-radius: 30px;
+            color: #fff;
+        }
+
+        .subtitle {
+            color: #94a3b8;
+            font-size: 14px;
+            margin-bottom: 28px;
+            border-left: 4px solid #8b5cf6;
+            padding-left: 14px;
+        }
+
+        /* ---------- TEXTAREA ---------- */
+        textarea {
+            width: 100%;
+            min-height: 180px;
+            padding: 16px;
+            border-radius: 14px;
+            border: 1px solid #334155;
+            background: #0f172a;
+            color: #e2e8f0;
+            font-size: 16px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            outline: none;
+            resize: vertical;
+            transition: 0.3s;
+            line-height: 1.6;
+        }
+
+        textarea:focus {
+            border-color: #8b5cf6;
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15);
+        }
+
+        textarea::placeholder {
+            color: #475569;
+        }
+
+        /* ---------- TOOLBAR ---------- */
+        .toolbar {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin: 12px 0 20px 0;
+        }
+
+        .toolbar button {
+            padding: 8px 18px;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+            transition: 0.3s;
+            background: #334155;
+            color: #e2e8f0;
+        }
+
+        .toolbar button:hover {
+            background: #475569;
+            transform: scale(1.03);
+        }
+
+        .toolbar .clear-btn {
+            background: #ef4444;
+            color: white;
+        }
+
+        .toolbar .clear-btn:hover {
+            background: #dc2626;
+        }
+
+        .toolbar .copy-text-btn {
+            background: #8b5cf6;
+            color: white;
+        }
+
+        .toolbar .copy-text-btn:hover {
+            background: #7c3aed;
+        }
+
+        /* ---------- STATS GRID ---------- */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin: 18px 0 6px 0;
+        }
+
+        .stat-card {
+            background: #0f172a;
+            padding: 14px 10px;
+            border-radius: 14px;
+            border: 1px solid #334155;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .stat-card:hover {
+            border-color: #8b5cf6;
+        }
+
+        .stat-number {
+            font-size: 26px;
+            font-weight: 800;
+            color: #e2e8f0;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: #94a3b8;
+            margin-top: 4px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* ---------- EXTRA STATS ---------- */
+        .extra-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .extra-stat {
+            background: #0f172a;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid #334155;
+            text-align: center;
+        }
+
+        .extra-stat .number {
+            font-size: 18px;
+            font-weight: 700;
+            color: #e2e8f0;
+        }
+
+        .extra-stat .label {
+            font-size: 11px;
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        /* ---------- READING TIME ---------- */
+        .reading-time {
+            text-align: center;
+            margin-top: 16px;
+            padding: 10px;
+            background: #0f172a;
+            border-radius: 10px;
+            border: 1px solid #334155;
+            color: #94a3b8;
+            font-size: 14px;
+        }
+
+        .reading-time strong {
+            color: #8b5cf6;
+            font-size: 18px;
+        }
+
+        /* ---------- FOOTER ---------- */
+        .footer {
+            margin-top: 24px;
+            text-align: center;
+            color: #475569;
+            font-size: 12px;
+            border-top: 1px solid #1e293b;
+            padding-top: 18px;
+        }
+
+        /* ---------- RESPONSIVE ---------- */
+        @media (max-width: 520px) {
+            .container {
+                padding: 24px 16px;
+            }
+
+            h1 {
+                font-size: 21px;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+            }
+
+            .extra-stats {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+
+            .stat-number {
+                font-size: 22px;
+            }
+
+            textarea {
+                min-height: 140px;
+                font-size: 14px;
+            }
+
+            .toolbar {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .toolbar button {
+                flex: 1;
+                min-width: 70px;
+                font-size: 12px;
+                padding: 8px 12px;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 6px;
+            }
+
+            .stat-card {
+                padding: 10px 6px;
+            }
+
+            .stat-number {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- HEADER -->
+        <h1>
+            📝 Word <span>Count</span>
+        </h1>
+        <div class="subtitle">Count words, characters, sentences &amp; more</div>
+
+        <!-- TEXTAREA -->
+        <textarea id="textInput" placeholder="Paste or type your text here..."></textarea>
+
+        <!-- TOOLBAR -->
+        <div class="toolbar">
+            <button class="copy-text-btn" id="copyTextBtn">📋 Copy Text</button>
+            <button class="clear-btn" id="clearBtn">🗑️ Clear</button>
+        </div>
+
+        <!-- STATS GRID -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number" id="wordCount">0</div>
+                <div class="stat-label">Words</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="charCount">0</div>
+                <div class="stat-label">Characters</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="sentenceCount">0</div>
+                <div class="stat-label">Sentences</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="paraCount">0</div>
+                <div class="stat-label">Paragraphs</div>
+            </div>
+        </div>
+
+        <!-- EXTRA STATS -->
+        <div class="extra-stats">
+            <div class="extra-stat">
+                <div class="number" id="charNoSpace">0</div>
+                <div class="label">Chars (no spaces)</div>
+            </div>
+            <div class="extra-stat">
+                <div class="number" id="spaceCount">0</div>
+                <div class="label">Spaces</div>
+            </div>
+            <div class="extra-stat">
+                <div class="number" id="lineCount">0</div>
+                <div class="label">Lines</div>
+            </div>
+        </div>
+
+        <!-- READING TIME -->
+        <div class="reading-time">
+            ⏱️ Reading time: <strong id="readingTime">0</strong> min
+            &nbsp;&bull;&nbsp; Speaking time: <strong id="speakingTime">0</strong> min
+        </div>
+
+        <div class="footer">
+            ✍️ Perfect for writers, students &amp; SEO pros
+        </div>
+
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- JAVASCRIPT -->
+    <script>
+        (function() {
+            'use strict';
+
+            // ----- DOM refs -----
+            const textInput = document.getElementById('textInput');
+            const wordCount = document.getElementById('wordCount');
+            const charCount = document.getElementById('charCount');
+            const charNoSpace = document.getElementById('charNoSpace');
+            const spaceCount = document.getElementById('spaceCount');
+            const sentenceCount = document.getElementById('sentenceCount');
+            const paraCount = document.getElementById('paraCount');
+            const lineCount = document.getElementById('lineCount');
+            const readingTime = document.getElementById('readingTime');
+            const speakingTime = document.getElementById('speakingTime');
+            const clearBtn = document.getElementById('clearBtn');
+            const copyTextBtn = document.getElementById('copyTextBtn');
+
+            // ----- Main counter function -----
+            function countAll() {
+                const text = textInput.value;
+                const length = text.length;
+
+                // ----- Words -----
+                // Trim and split by whitespace, filter empty
+                const words = text.trim() === '' ? [] : text.trim().split(/\s+/);
+                const wordCountValue = words.length;
+                wordCount.textContent = wordCountValue;
+
+                // ----- Characters -----
+                charCount.textContent = length;
+
+                // ----- Characters (no spaces) -----
+                const noSpaces = text.replace(/\s/g, '');
+                charNoSpace.textContent = noSpaces.length;
+
+                // ----- Spaces -----
+                const spaces = (text.match(/ /g) || []).length;
+                spaceCount.textContent = spaces;
+
+                // ----- Sentences -----
+                // Split by ., !, ? and filter empty
+                const sentences = text.split(/[.!?]+/).filter(s => s.trim() !== '');
+                sentenceCount.textContent = sentences.length;
+
+                // ----- Paragraphs -----
+                // Split by double newline or more
+                const paragraphs = text.split(/\n\s*\n/).filter(p => p.trim() !== '');
+                paraCount.textContent = paragraphs.length;
+
+                // ----- Lines -----
+                const lines = text.split('\n').filter(line => line.trim() !== '');
+                lineCount.textContent = lines.length;
+
+                // ----- Reading Time (avg 200 words per min) -----
+                const readingMinutes = wordCountValue / 200;
+                readingTime.textContent = Math.ceil(readingMinutes) || 0;
+
+                // ----- Speaking Time (avg 150 words per min) -----
+                const speakingMinutes = wordCountValue / 150;
+                speakingTime.textContent = Math.ceil(speakingMinutes) || 0;
+            }
+
+            // ----- Clear text -----
+            function clearText() {
+                textInput.value = '';
+                countAll();
+                textInput.focus();
+            }
+
+            // ----- Copy text -----
+            function copyText() {
+                const text = textInput.value;
+                if (!text || text === '') {
+                    alert('Nothing to copy! Please enter some text first.');
+                    return;
+                }
+
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(text)
+                        .then(() => {
+                            const original = copyTextBtn.textContent;
+                            copyTextBtn.textContent = '✅ Copied!';
+                            setTimeout(() => {
+                                copyTextBtn.textContent = original;
+                            }, 2000);
+                        })
+                        .catch(() => {
+                            fallbackCopy(text);
+                        });
+                } else {
+                    fallbackCopy(text);
+                }
+            }
+
+            // ----- Fallback copy -----
+            function fallbackCopy(text) {
+                const textarea = document.createElement('textarea');
+                textarea.value = text;
+                textarea.style.position = 'fixed';
+                textarea.style.opacity = '0';
+                document.body.appendChild(textarea);
+                textarea.select();
+                try {
+                    document.execCommand('copy');
+                    const original = copyTextBtn.textContent;
+                    copyTextBtn.textContent = '✅ Copied!';
+                    setTimeout(() => {
+                        copyTextBtn.textContent = original;
+                    }, 2000);
+                } catch (e) {
+                    alert('Unable to copy. Please select and copy manually.');
+                }
+                document.body.removeChild(textarea);
+            }
+
+            // ----- Event listeners -----
+            textInput.addEventListener('input', countAll);
+
+            clearBtn.addEventListener('click', clearText);
+
+            copyTextBtn.addEventListener('click', copyText);
+
+            // ----- Initial count on load -----
+            countAll();
+
+            // ----- Auto-focus on load -----
+            textInput.focus();
+
+        })();
+    </script>
+
+</body>
+</html>
