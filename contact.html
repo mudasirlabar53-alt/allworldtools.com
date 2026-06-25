@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us — Free Online Tools</title>
+    <meta name="description" content="Get in touch with us. Have a question, suggestion, or bug report? We'd love to hear from you." />
+    <style>
+        /* ---------- RESET & BASE ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(145deg, #0b1120 0%, #1a2332 100%);
+            min-height: 100vh;
+            padding: 30px 20px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: #1e293b;
+            padding: 50px 40px;
+            border-radius: 28px;
+            border: 1px solid #334155;
+            box-shadow: 0 25px 50px -8px rgba(0, 0, 0, 0.8);
+        }
+
+        /* ---------- BACK BUTTON ---------- */
+        .back-link {
+            display: inline-block;
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 14px;
+            margin-bottom: 30px;
+            transition: 0.3s;
+        }
+
+        .back-link:hover {
+            color: #f1f5f9;
+            transform: translateX(-4px);
+        }
+
+        /* ---------- HEADER ---------- */
+        h1 {
+            color: #f1f5f9;
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        h1 span {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            padding: 4px 16px;
+            border-radius: 14px;
+            color: #fff;
+            font-size: 28px;
+        }
+
+        .subtitle {
+            color: #94a3b8;
+            font-size: 16px;
+            margin-bottom: 32px;
+            border-left: 4px solid #8b5cf6;
+            padding-left: 16px;
+        }
+
+        /* ---------- CONTACT INFO ---------- */
+        .contact-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .info-card {
+            background: #0f172a;
+            padding: 20px 16px;
+            border-radius: 14px;
+            border: 1px solid #334155;
+            text-align: center;
+        }
+
+        .info-card .icon {
+            font-size: 28px;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .info-card h3 {
+            color: #e2e8f0;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .info-card p {
+            color: #94a3b8;
+            font-size: 13px;
+            margin-top: 4px;
+        }
+
+        .info-card a {
+            color: #8b5cf6;
+            text-decoration: none;
+        }
+
+        .info-card a:hover {
+            text-decoration: underline;
+        }
+
+        /* ---------- FORM ---------- */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            color: #cbd5e1;
+            font-weight: 500;
+            font-size: 14px;
+            margin-bottom: 6px;
+        }
+
+        .form-group label .required {
+            color: #ef4444;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: 12px;
+            border: 1px solid #334155;
+            background: #0f172a;
+            color: #e2e8f0;
+            font-size: 15px;
+            outline: none;
+            transition: 0.3s;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: #8b5cf6;
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #475569;
+        }
+
+        .form-group textarea {
+            min-height: 140px;
+            resize: vertical;
+        }
+
+        .form-group select option {
+            background: #1e293b;
+            color: #e2e8f0;
+        }
+
+        /* ---------- SUBMIT BUTTON ---------- */
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            border: none;
+            border-radius: 14px;
+            color: white;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 8px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px -8px rgba(139, 92, 246, 0.4);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0px);
+        }
+
+        /* ---------- NOTE ---------- */
+        .note {
+            text-align: center;
+            color: #64748b;
+            font-size: 13px;
+            margin-top: 16px;
+        }
+
+        .note a {
+            color: #8b5cf6;
+            text-decoration: none;
+        }
+
+        .note a:hover {
+            text-decoration: underline;
+        }
+
+        /* ---------- FOOTER ---------- */
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            color: #475569;
+            font-size: 13px;
+            border-top: 1px solid #1e293b;
+            padding-top: 24px;
+        }
+
+        .footer a {
+            color: #64748b;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: 0.3s;
+        }
+
+        .footer a:hover {
+            color: #94a3b8;
+        }
+
+        /* ---------- RESPONSIVE ---------- */
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            h1 span {
+                font-size: 22px;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- BACK BUTTON -->
+        <a href="index.html" class="back-link">← Back to Tools</a>
+
+        <!-- HEADER -->
+        <h1>
+            Contact <span>Us</span>
+        </h1>
+        <div class="subtitle">Have a question, suggestion, or bug report? We'd love to hear from you.</div>
+
+        <!-- CONTACT INFO -->
+        <div class="contact-info">
+            <div class="info-card">
+                <span class="icon">📧</span>
+                <h3>Email</h3>
+                <p><a href="mailto:support@yourwebsite.com">support@yourwebsite.com</a></p>
+            </div>
+            <div class="info-card">
+                <span class="icon">🐦</span>
+                <h3>Twitter / X</h3>
+                <p><a href="#">@yourwebsite</a></p>
+            </div>
+            <div class="info-card">
+                <span class="icon">⏱️</span>
+                <h3>Response Time</h3>
+                <p>Within 24-48 hours</p>
+            </div>
+        </div>
+
+        <!-- CONTACT FORM -->
+        <form id="contactForm">
+
+            <div class="form-group">
+                <label for="name">Your Name <span class="required">*</span></label>
+                <input type="text" id="name" placeholder="Enter your full name" required />
+            </div>
+
+            <div class="form-group">
+                <label for="email">Your Email <span class="required">*</span></label>
+                <input type="email" id="email" placeholder="Enter your email address" required />
+            </div>
+
+            <div class="form-group">
+                <label for="subject">Subject <span class="required">*</span></label>
+                <select id="subject" required>
+                    <option value="">Select a subject...</option>
+                    <option value="suggestion">💡 Tool Suggestion</option>
+                    <option value="bug">🐛 Bug Report</option>
+                    <option value="question">❓ Question</option>
+                    <option value="feedback">📝 Feedback</option>
+                    <option value="advertising">📢 Advertising / Partnership</option>
+                    <option value="other">🔧 Other</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="message">Message <span class="required">*</span></label>
+                <textarea id="message" placeholder="Write your message here..." required></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">📨 Send Message</button>
+
+            <p class="note">
+                🔒 Your information is safe with us. We never share your data.
+                <br />
+                By submitting, you agree to our <a href="privacy-policy.html">Privacy Policy</a>.
+            </p>
+
+        </form>
+
+        <!-- FOOTER -->
+        <div class="footer">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="privacy-policy.html">Privacy Policy</a>
+        </div>
+
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- JAVASCRIPT - Form Handling -->
+    <script>
+        (function() {
+            'use strict';
+
+            const form = document.getElementById('contactForm');
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                // Get values
+                const name = document.getElementById('name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const subject = document.getElementById('subject').value;
+                const message = document.getElementById('message').value.trim();
+
+                // Simple validation
+                if (!name || !email || !subject || !message) {
+                    alert('Please fill in all required fields.');
+                    return;
+                }
+
+                // Email validation
+                if (!email.includes('@') || !email.includes('.')) {
+                    alert('mudasirlabar53@gmail.com.');
+                    return;
+                }
+
+                // Build mailto link
+                const mailtoLink =
+                    'mailto:mudasirlabar53@gmail.com?' +
+                    'subject=' + encodeURIComponent('Contact Form: ' + subject) +
+                    '&body=' + encodeURIComponent(
+                        'Name: ' + name + '\n' +
+                        'Email: ' + email + '\n' +
+                        'Subject: ' + subject + '\n\n' +
+                        'Message:\n' + message + '\n\n' +
+                        '---\nSent from yourwebsite.com contact form'
+                    );
+
+                // Open email client
+                window.location.href = mailtoLink;
+
+                // Success message
+                const original = document.querySelector('.submit-btn').textContent;
+                document.querySelector('.submit-btn').textContent = '✅ Email Opened!';
+                document.querySelector('.submit-btn').style.background = '#22c55e';
+
+                setTimeout(() => {
+                    document.querySelector('.submit-btn').textContent = original;
+                    document.querySelector('.submit-btn').style.background = 'linear-gradient(135deg, #3b82f6, #8b5cf6)';
+                }, 4000);
+
+                // Reset form (optional)
+                // form.reset();
+            });
+
+        })();
+    </script>
+
+</body>
+</html>
