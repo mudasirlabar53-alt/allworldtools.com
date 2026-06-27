@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Career Simulator — Find your ideal career path</title>
+    <meta name="description" content="AI-powered career simulator: get personalized career recommendations, skill gap analysis, learning roadmaps, and market insights." />
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(145deg, #0b1120 0%, #1a2332 100%);
+            min-height: 100vh;
+            padding: 30px 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            margin: 0 auto;
+            background: #1e293b;
+            padding: 40px 35px;
+            border-radius: 28px;
+            border: 1px solid #334155;
+            box-shadow: 0 25px 50px -8px rgba(0, 0, 0, 0.8);
+        }
+
+        .header { text-align: center; margin-bottom: 28px; }
+        .header .icon { font-size: 48px; display: block; margin-bottom: 6px; }
+        .header h1 { color: #f1f5f9; font-size: 30px; font-weight: 800; }
+        .header h1 span { background: linear-gradient(135deg, #8b5cf6, #3b82f6); padding: 4px 14px; border-radius: 12px; color: #fff; font-size: 26px; }
+        .header p { color: #94a3b8; font-size: 14px; margin-top: 6px; }
+
+        .form-group { margin-bottom: 16px; }
+        .form-group label { display: block; color: #cbd5e1; font-weight: 500; font-size: 14px; margin-bottom: 6px; }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: 12px;
+            border: 1px solid #334155;
+            background: #0f172a;
+            color: #e2e8f0;
+            font-size: 15px;
+            outline: none;
+            transition: 0.3s;
+            font-family: inherit;
+        }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            border-color: #8b5cf6;
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15);
+        }
+        .form-group textarea { min-height: 80px; resize: vertical; }
+        .form-group input::placeholder { color: #475569; }
+
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+        .check-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+            border: none;
+            border-radius: 14px;
+            color: white;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 8px;
+        }
+        .check-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 28px -8px rgba(139, 92, 246, 0.4); }
+        .check-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            color: #94a3b8;
+        }
+        .loading.show { display: block; }
+        .loading .spinner {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border: 4px solid #334155;
+            border-top: 4px solid #8b5cf6;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        .result-box {
+            background: #0f172a;
+            border-radius: 16px;
+            padding: 20px;
+            border: 1px solid #334155;
+            margin-top: 20px;
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        .result-box.show { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .result-section {
+            margin-bottom: 16px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #1e293b;
+        }
+        .result-section:last-child { border-bottom: none; margin-bottom: 0; }
+        .result-section h3 {
+            color: #94a3b8;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .career-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        .career-card {
+            background: #1e293b;
+            padding: 14px 16px;
+            border-radius: 12px;
+            border: 1px solid #334155;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .career-card:hover { border-color: #8b5cf6; transform: scale(1.02); }
+        .career-card.selected { border-color: #8b5cf6; background: #8b5cf620; }
+        .career-card .title { color: #f1f5f9; font-weight: 700; font-size: 15px; }
+        .career-card .match { color: #22c55e; font-size: 13px; font-weight: 600; }
+        .career-card .desc { color: #94a3b8; font-size: 13px; margin-top: 4px; }
+
+        .skill-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 8px;
+            border-bottom: 1px solid #1e293b;
+            font-size: 14px;
+            color: #cbd5e1;
+        }
+        .skill-item:last-child { border-bottom: none; }
+        .skill-item .missing { color: #ef4444; }
+        .skill-item .has { color: #22c55e; }
+        .skill-item .suggestion { color: #f59e0b; font-size: 12px; }
+
+        .roadmap-step {
+            display: flex;
+            gap: 12px;
+            padding: 10px 12px;
+            border-left: 3px solid #8b5cf6;
+            margin-bottom: 8px;
+            background: #1e293b;
+            border-radius: 0 8px 8px 0;
+        }
+        .roadmap-step .step-num { color: #8b5cf6; font-weight: 700; font-size: 14px; min-width: 28px; }
+        .roadmap-step .step-text { color: #cbd5e1; font-size: 14px; }
+
+        .insight-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 10px;
+        }
+        .insight-card {
+            background: #1e293b;
+            padding: 12px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid #334155;
+        }
+        .insight-card .label { color: #94a3b8; font-size: 11px; text-transform: uppercase; }
+        .insight-card .value { color: #f1f5f9; font-size: 18px; font-weight: 700; margin-top: 4px; }
+        .insight-card .value.green { color: #22c55e; }
+        .insight-card .value.orange { color: #f59e0b; }
+        .insight-card .value.red { color: #ef4444; }
+
+        .footer {
+            margin-top: 28px;
+            text-align: center;
+            color: #475569;
+            font-size: 12px;
+            border-top: 1px solid #1e293b;
+            padding-top: 18px;
+        }
+        .footer a { color: #64748b; text-decoration: none; margin: 0 8px; }
+        .footer a:hover { color: #94a3b8; }
+
+        @media (max-width: 550px) {
+            .container { padding: 24px 16px; }
+            .header h1 { font-size: 22px; }
+            .header h1 span { font-size: 18px; }
+            .form-row { grid-template-columns: 1fr; gap: 0; }
+            .career-grid { grid-template-columns: 1fr; }
+            .insight-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <div class="header">
+            <span class="icon">🚀</span>
+            <h1>AI <span>Career Simulator</span></h1>
+            <p>Discover your ideal career path, identify skill gaps, and get a personalized roadmap</p>
+        </div>
+
+        <div class="form-group">
+            <label for="nameInput">👤 Your Name</label>
+            <input type="text" id="nameInput" placeholder="e.g., Ali Khan" />
+        </div>
+
+        <div class="form-group">
+            <label for="skillsInput">🛠️ Your Skills (comma separated)</label>
+            <input type="text" id="skillsInput" placeholder="e.g., Python, JavaScript, Java, C++, Data Structures, Algorithms, Git" />
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="educationSelect">🎓 Education Level</label>
+                <select id="educationSelect">
+                    <option value="high-school">High School</option>
+                    <option value="bachelors" selected>Bachelor's</option>
+                    <option value="masters">Master's</option>
+                    <option value="phd">PhD</option>
+                    <option value="self-taught">Self-Taught</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="experienceSelect">⏳ Experience Level</label>
+                <select id="experienceSelect">
+                    <option value="entry">Entry Level (0-2 years)</option>
+                    <option value="mid" selected>Mid Level (3-5 years)</option>
+                    <option value="senior">Senior (6-10 years)</option>
+                    <option value="expert">Expert (10+ years)</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="interestsInput">💡 Your Interests (optional)</label>
+            <textarea id="interestsInput" placeholder="e.g., I enjoy building things, solving problems, working with data..."></textarea>
+        </div>
+
+        <button class="check-btn" id="simulateBtn">🔮 Simulate Career Path</button>
+
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p style="margin-top:12px;">AI is analyzing your profile...</p>
+        </div>
+
+        <div class="result-box" id="resultBox">
+            <div class="result-section">
+                <h3>🎯 Recommended Careers</h3>
+                <div class="career-grid" id="careerGrid"></div>
+            </div>
+            <div class="result-section">
+                <h3>🧠 Skill Gap Analysis</h3>
+                <div id="skillGapContainer"></div>
+            </div>
+            <div class="result-section">
+                <h3>🗺️ Personalized Learning Roadmap</h3>
+                <div id="roadmapContainer"></div>
+            </div>
+            <div class="result-section">
+                <h3>📊 Market Insights</h3>
+                <div class="insight-grid" id="insightGrid"></div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <a href="index.html">🏠 Home</a>
+            <a href="blog.html">📝 Blog</a>
+            <a href="about.html">ℹ️ About</a>
+        </div>
+
+    </div>
+
+    <script>
+        (function() {
+            'use strict';
+
+            const nameInput = document.getElementById('nameInput');
+            const skillsInput = document.getElementById('skillsInput');
+            const educationSelect = document.getElementById('educationSelect');
+            const experienceSelect = document.getElementById('experienceSelect');
+            const interestsInput = document.getElementById('interestsInput');
+            const simulateBtn = document.getElementById('simulateBtn');
+            const loading = document.getElementById('loading');
+            const resultBox = document.getElementById('resultBox');
+            const careerGrid = document.getElementById('careerGrid');
+            const skillGapContainer = document.getElementById('skillGapContainer');
+            const roadmapContainer = document.getElementById('roadmapContainer');
+            const insightGrid = document.getElementById('insightGrid');
+
+            // ----- Career database with normalized skills -----
+            const careers = [
+                {
+                    title: 'Software Engineer',
+                    match: 0,
+                    skills: ['Python', 'JavaScript', 'Java', 'C++', 'Data Structures', 'Algorithms', 'Git'],
+                    salary: '$95,000 - $140,000',
+                    demand: 'High',
+                    roadmap: [
+                        'Master a programming language (Python/Java/JavaScript)',
+                        'Learn data structures and algorithms',
+                        'Build a portfolio of projects',
+                        'Contribute to open source',
+                        'Apply for junior developer roles'
+                    ]
+                },
+                {
+                    title: 'Data Scientist',
+                    match: 0,
+                    skills: ['Python', 'SQL', 'Machine Learning', 'Statistics', 'Data Visualization', 'R', 'Tableau'],
+                    salary: '$105,000 - $160,000',
+                    demand: 'Very High',
+                    roadmap: [
+                        'Learn Python and SQL',
+                        'Study statistics and probability',
+                        'Take machine learning courses',
+                        'Build data science projects',
+                        'Create a portfolio on GitHub/Kaggle'
+                    ]
+                },
+                {
+                    title: 'UX/UI Designer',
+                    match: 0,
+                    skills: ['Figma', 'Sketch', 'Adobe XD', 'User Research', 'Prototyping', 'Design Systems', 'CSS'],
+                    salary: '$75,000 - $120,000',
+                    demand: 'High',
+                    roadmap: [
+                        'Learn design fundamentals',
+                        'Master Figma or Adobe XD',
+                        'Build a design portfolio',
+                        'Study user research methods',
+                        'Apply for entry-level design roles'
+                    ]
+                },
+                {
+                    title: 'Product Manager',
+                    match: 0,
+                    skills: ['Communication', 'Project Management', 'Agile', 'Data Analysis', 'Marketing', 'Leadership'],
+                    salary: '$90,000 - $150,000',
+                    demand: 'High',
+                    roadmap: [
+                        'Learn product management fundamentals',
+                        'Get certified in Agile/Scrum',
+                        'Build a side project',
+                        'Network with PMs',
+                        'Apply for APM programs'
+                    ]
+                },
+                {
+                    title: 'Cybersecurity Analyst',
+                    match: 0,
+                    skills: ['Network Security', 'Cloud Security', 'Penetration Testing', 'Python', 'SIEM', 'ISO 27001'],
+                    salary: '$85,000 - $135,000',
+                    demand: 'Very High',
+                    roadmap: [
+                        'Get CompTIA Security+ certified',
+                        'Learn network fundamentals',
+                        'Practice on TryHackMe/HackTheBox',
+                        'Get hands-on with security tools',
+                        'Apply for security analyst roles'
+                    ]
+                },
+                {
+                    title: 'Full Stack Developer',
+                    match: 0,
+                    skills: ['JavaScript', 'React', 'Node.js', 'Python', 'SQL', 'MongoDB', 'AWS'],
+                    salary: '$90,000 - $140,000',
+                    demand: 'Very High',
+                    roadmap: [
+                        'Master HTML, CSS, and JavaScript',
+                        'Learn a frontend framework (React/Vue)',
+                        'Learn a backend language (Node/Python)',
+                        'Learn databases (SQL/MongoDB)',
+                        'Build full-stack projects'
+                    ]
+                }
+            ];
+
+            const marketData = {
+                'Software Engineer': { growth: '22%', competition: 'Medium', remote: '75%' },
+                'Data Scientist': { growth: '35%', competition: 'High', remote: '80%' },
+                'UX/UI Designer': { growth: '16%', competition: 'Medium', remote: '70%' },
+                'Product Manager': { growth: '18%', competition: 'High', remote: '65%' },
+                'Cybersecurity Analyst': { growth: '32%', competition: 'Medium', remote: '60%' },
+                'Full Stack Developer': { growth: '25%', competition: 'High', remote: '78%' }
+            };
+
+            // ----- Normalize skill for matching -----
+            function normalizeSkill(skill) {
+                return skill.trim().toLowerCase().replace(/\s+/g, ' ');
+            }
+
+            // ----- Check if user has a skill (flexible matching) -----
+            function hasSkill(userSkills, careerSkill) {
+                const normalizedCareer = normalizeSkill(careerSkill);
+                return userSkills.some(us => {
+                    const normalizedUser = normalizeSkill(us);
+                    // Exact match or partial match (e.g., "Data Structures" matches "data structures")
+                    return normalizedUser === normalizedCareer ||
+                           normalizedUser.includes(normalizedCareer) ||
+                           normalizedCareer.includes(normalizedUser);
+                });
+            }
+
+            function simulate() {
+                const name = nameInput.value.trim() || 'User';
+                const skillsText = skillsInput.value.trim();
+                const education = educationSelect.value;
+                const experience = experienceSelect.value;
+                const interests = interestsInput.value.trim();
+
+                if (!skillsText) {
+                    alert('Please enter at least one skill.');
+                    return;
+                }
+
+                // Parse user skills
+                const userSkills = skillsText.split(',').map(s => s.trim()).filter(s => s);
+
+                loading.classList.add('show');
+                resultBox.classList.remove('show');
+
+                setTimeout(() => {
+                    // Calculate match for each career
+                    const results = careers.map(career => {
+                        const matchedSkills = career.skills.filter(skill =>
+                            hasSkill(userSkills, skill)
+                        );
+                        const matchPercent = Math.round((matchedSkills.length / career.skills.length) * 100);
+                        return { ...career, match: matchPercent, matchedSkills };
+                    });
+
+                    results.sort((a, b) => b.match - a.match);
+
+                    const topCareers = results.slice(0, 3);
+
+                    // Build career cards
+                    careerGrid.innerHTML = topCareers.map(c => `
+                        <div class="career-card" onclick="selectCareer('${c.title}')">
+                            <div class="title">${c.title}</div>
+                            <div class="match">${c.match}% Match</div>
+                            <div class="desc">${c.skills.slice(0, 4).join(', ')}...</div>
+                        </div>
+                    `).join('');
+
+                    // Show details for top career
+                    displayCareerDetails(topCareers[0], userSkills);
+
+                    loading.classList.remove('show');
+                    resultBox.classList.add('show');
+                    resultBox.scrollIntoView({ behavior: 'smooth' });
+
+                }, 1500);
+            }
+
+            function displayCareerDetails(career, userSkills) {
+                if (!career) return;
+
+                // Skill gap
+                const missingSkills = career.skills.filter(skill =>
+                    !hasSkill(userSkills, skill)
+                );
+
+                skillGapContainer.innerHTML = `
+                    <div style="color:#94a3b8;font-size:13px;margin-bottom:8px;">
+                        For <strong style="color:#f1f5f9;">${career.title}</strong>
+                        <span style="float:right;color:#22c55e;">${career.match}% Match</span>
+                    </div>
+                    ${career.skills.map(skill => {
+                        const has = hasSkill(userSkills, skill);
+                        const suggestion = !has ? getSkillSuggestion(skill) : '';
+                        return `
+                            <div class="skill-item">
+                                <span>${skill}</span>
+                                <span>
+                                    ${has ? '✅ <span class="has">Has</span>' : '❌ <span class="missing">Missing</span>'}
+                                    ${suggestion ? `<span class="suggestion"> 💡 ${suggestion}</span>` : ''}
+                                </span>
+                            </div>
+                        `;
+                    }).join('')}
+                    ${missingSkills.length > 0 ? `
+                        <div style="color:#f59e0b;font-size:13px;margin-top:8px;">
+                            💡 Focus on learning: <strong style="color:#f59e0b;">${missingSkills.join(', ')}</strong>
+                        </div>
+                    ` : `
+                        <div style="color:#22c55e;font-size:13px;margin-top:8px;">
+                            ✅ You have all the skills for this role!
+                        </div>
+                    `}
+                `;
+
+                // Roadmap
+                roadmapContainer.innerHTML = career.roadmap.map((step, i) => `
+                    <div class="roadmap-step">
+                        <span class="step-num">${i + 1}.</span>
+                        <span class="step-text">${step}</span>
+                    </div>
+                `).join('');
+
+                // Market insights
+                const market = marketData[career.title] || { growth: '20%', competition: 'Medium', remote: '70%' };
+                insightGrid.innerHTML = `
+                    <div class="insight-card">
+                        <div class="label">📈 Job Growth</div>
+                        <div class="value green">${market.growth}</div>
+                    </div>
+                    <div class="insight-card">
+                        <div class="label">🏆 Competition</div>
+                        <div class="value orange">${market.competition}</div>
+                    </div>
+                    <div class="insight-card">
+                        <div class="label">🏠 Remote Work</div>
+                        <div class="value green">${market.remote}</div>
+                    </div>
+                `;
+            }
+
+            // ----- Skill suggestion helper -----
+            function getSkillSuggestion(skill) {
+                const suggestions = {
+                    'Python': 'Try Codecademy or Python.org',
+                    'JavaScript': 'FreeCodeCamp or MDN',
+                    'Java': 'Oracle Java Tutorials',
+                    'C++': 'LearnCPP.com',
+                    'Data Structures': 'LeetCode or GeeksforGeeks',
+                    'Algorithms': 'LeetCode or Coursera',
+                    'Git': 'GitHub Guides',
+                    'SQL': 'W3Schools or SQLZoo',
+                    'Machine Learning': 'Coursera (Andrew Ng)',
+                    'Statistics': 'Khan Academy',
+                    'Data Visualization': 'Tableau Public',
+                    'R': 'RStudio Education',
+                    'Tableau': 'Tableau Training',
+                    'Figma': 'Figma Learn',
+                    'Sketch': 'Sketch Tutorials',
+                    'Adobe XD': 'Adobe XD Learn',
+                    'User Research': 'NNGroup',
+                    'Prototyping': 'UX Design Institute',
+                    'Design Systems': 'Material Design',
+                    'CSS': 'MDN CSS Guide',
+                    'Communication': 'Toastmasters',
+                    'Project Management': 'PMP Certification',
+                    'Agile': 'Scrum Alliance',
+                    'Data Analysis': 'Google Data Analytics',
+                    'Marketing': 'HubSpot Academy',
+                    'Leadership': 'Harvard Business Review',
+                    'Network Security': 'CompTIA Security+',
+                    'Cloud Security': 'AWS Security Training',
+                    'Penetration Testing': 'OSCP Certification',
+                    'SIEM': 'Splunk Training',
+                    'ISO 27001': 'ISO Certification',
+                    'React': 'React Docs',
+                    'Node.js': 'Node.js Docs',
+                    'MongoDB': 'MongoDB University',
+                    'AWS': 'AWS Training'
+                };
+                return suggestions[skill] || 'Online course recommended';
+            }
+
+            // ----- Select career (click handler) -----
+            window.selectCareer = function(title) {
+                const career = careers.find(c => c.title === title);
+                if (!career) return;
+
+                document.querySelectorAll('.career-card').forEach(el => {
+                    el.classList.remove('selected');
+                    if (el.querySelector('.title').textContent === title) {
+                        el.classList.add('selected');
+                    }
+                });
+
+                const skillsText = skillsInput.value.trim();
+                const userSkills = skillsText ? skillsText.split(',').map(s => s.trim()).filter(s => s) : [];
+                displayCareerDetails(career, userSkills);
+            };
+
+            // ----- Event listeners -----
+            simulateBtn.addEventListener('click', simulate);
+
+            skillsInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') simulate();
+            });
+
+        })();
+    </script>
+
+</body>
+</html>
