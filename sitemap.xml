@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    <!-- ========== HOMEPAGE ========== -->
+    <url>
+        <loc>https://toolsnest.online/</loc>
+        <lastmod>2026-06-27</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+
+    <!-- ========== TOOLS ========== -->
+    <url>
+        <loc>https://toolsnest.online/password-generator.html</loc>
+        <lastmod>2026-06-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <url>
+        <loc>https://toolsnest.online/bmi-calculator.html</loc>
+        <lastmod>2026-06-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <url>
+        <loc>https://toolsnest.online/word-counter.html</loc>
+        <lastmod>2026-06-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- ========== PAGES ========== -->
+    <url>
+        <loc>https://toolsnest.online/about.html</loc>
+        <lastmod>2026-06-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+
+    <url>
+        <loc>https://toolsnest.online/contact.html</loc>
+        <lastmod>2026-06-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+
+    <url>
+        <loc>https://toolsnest.online/privacy-policy.html</loc>
+        <lastmod>2026-06-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.4</priority>
+    </url>
+
+    <!-- ========== BLOG ========== -->
+    <url>
+        <loc>https://toolsnest.online/blog.html</loc>
+        <lastmod>2026-06-27</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- ========== BLOG ARTICLES ========== -->
+    <url>
+        <loc>https://toolsnest.online/blog/password-tips.html</loc>
+        <lastmod>2026-06-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <url>
+        <loc>https://toolsnest.online/blog/bmi-guide.html</loc>
+        <lastmod>2026-06-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <url>
+        <loc>https://toolsnest.online/blog/word-count-seo.html</loc>
+        <lastmod>2026-06-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <url>
+        <loc>https://toolsnest.online/blog/top-online-tools.html</loc>
+        <lastmod>2026-06-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <url>
+        <loc>https://toolsnest.online/blog/password-manager-vs-generator.html</loc>
+        <lastmod>2026-06-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <url>
+        <loc>https://toolsnest.online/blog/bmi-accuracy.html</loc>
+        <lastmod>2026-06-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <url>
+        <loc>https://toolsnest.online/blog/writing-tips-beginners.html</loc>
+        <lastmod>2026-06-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <url>
+        <loc>https://toolsnest.online/blog/online-safety-guide.html</loc>
+        <lastmod>2026-06-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <url>
+        <loc>https://toolsnest.online/blog/reuse-passwords.html</loc>
+        <lastmod>2026-06-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <url>
+        <loc>https://toolsnest.online/blog/healthy-bmi-tips.html</loc>
+        <lastmod>2026-06-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+</urlset>
