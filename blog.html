@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Blog — Free Online Tools Tips & Guides</title>
-    <meta name="description" content="Read our blog for tips, guides, and insights about online tools, password security, health, and productivity." />
+    <title>Blog — ToolsNest: Tips, Guides & Insights</title>
+    <meta name="description" content="Read our blog for tips, guides, and insights about online tools, password security, health, and AI career planning." />
     <style>
         /* ---------- RESET & BASE ---------- */
         * {
@@ -30,7 +30,6 @@
             box-shadow: 0 25px 50px -8px rgba(0, 0, 0, 0.8);
         }
 
-        /* ---------- BACK BUTTON ---------- */
         .back-link {
             display: inline-block;
             color: #94a3b8;
@@ -39,20 +38,14 @@
             margin-bottom: 30px;
             transition: 0.3s;
         }
+        .back-link:hover { color: #f1f5f9; transform: translateX(-4px); }
 
-        .back-link:hover {
-            color: #f1f5f9;
-            transform: translateX(-4px);
-        }
-
-        /* ---------- HEADER ---------- */
         h1 {
             color: #f1f5f9;
             font-size: 36px;
             font-weight: 800;
             margin-bottom: 8px;
         }
-
         h1 span {
             background: linear-gradient(135deg, #3b82f6, #8b5cf6);
             padding: 4px 16px;
@@ -69,7 +62,7 @@
             padding-left: 16px;
         }
 
-        /* ---------- BLOG POSTS ---------- */
+        /* ---- Blog Grid ---- */
         .blog-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -77,6 +70,7 @@
             margin-bottom: 30px;
         }
 
+        /* ---- Blog Card ---- */
         .blog-card {
             background: #0f172a;
             border-radius: 16px;
@@ -87,7 +81,6 @@
             color: inherit;
             display: block;
         }
-
         .blog-card:hover {
             border-color: #8b5cf6;
             transform: translateY(-4px);
@@ -105,25 +98,11 @@
             margin-bottom: 10px;
         }
 
-        .category.pass {
-            background: #3b82f6;
-            color: #fff;
-        }
-
-        .category.bmi {
-            background: #22c55e;
-            color: #fff;
-        }
-
-        .category.word {
-            background: #8b5cf6;
-            color: #fff;
-        }
-
-        .category.general {
-            background: #f59e0b;
-            color: #fff;
-        }
+        .category.pass { background: #3b82f6; color: #fff; }
+        .category.bmi { background: #22c55e; color: #fff; }
+        .category.word { background: #8b5cf6; color: #fff; }
+        .category.general { background: #f59e0b; color: #fff; }
+        .category.career { background: #f59e0b; color: #fff; }
 
         .blog-card h2 {
             color: #f1f5f9;
@@ -131,14 +110,12 @@
             font-weight: 700;
             margin-bottom: 8px;
         }
-
         .blog-card p {
             color: #94a3b8;
             font-size: 15px;
             line-height: 1.6;
             margin-bottom: 12px;
         }
-
         .blog-card .meta {
             color: #64748b;
             font-size: 13px;
@@ -146,13 +123,11 @@
             gap: 20px;
             flex-wrap: wrap;
         }
-
         .blog-card .meta span {
             display: flex;
             align-items: center;
             gap: 4px;
         }
-
         .blog-card .read-more {
             color: #8b5cf6;
             font-weight: 600;
@@ -161,25 +136,9 @@
             margin-top: 6px;
             transition: 0.3s;
         }
+        .blog-card:hover .read-more { transform: translateX(6px); }
 
-        .blog-card:hover .read-more {
-            transform: translateX(6px);
-        }
-
-        /* ---------- NO POSTS MESSAGE ---------- */
-        .no-posts {
-            text-align: center;
-            color: #64748b;
-            padding: 40px 20px;
-        }
-
-        .no-posts .icon {
-            font-size: 48px;
-            display: block;
-            margin-bottom: 12px;
-        }
-
-        /* ---------- FOOTER ---------- */
+        /* ---- Footer ---- */
         .footer {
             margin-top: 40px;
             text-align: center;
@@ -188,44 +147,22 @@
             border-top: 1px solid #1e293b;
             padding-top: 24px;
         }
-
         .footer a {
             color: #64748b;
             text-decoration: none;
             margin: 0 10px;
             transition: 0.3s;
         }
+        .footer a:hover { color: #94a3b8; }
 
-        .footer a:hover {
-            color: #94a3b8;
-        }
-
-        /* ---------- RESPONSIVE ---------- */
+        /* ---- Responsive ---- */
         @media (max-width: 600px) {
-            .container {
-                padding: 30px 20px;
-            }
-
-            h1 {
-                font-size: 28px;
-            }
-
-            h1 span {
-                font-size: 22px;
-            }
-
-            .blog-card {
-                padding: 18px 16px;
-            }
-
-            .blog-card h2 {
-                font-size: 18px;
-            }
-
-            .blog-card .meta {
-                font-size: 12px;
-                gap: 12px;
-            }
+            .container { padding: 30px 20px; }
+            h1 { font-size: 28px; }
+            h1 span { font-size: 22px; }
+            .blog-card { padding: 18px 16px; }
+            .blog-card h2 { font-size: 18px; }
+            .blog-card .meta { font-size: 12px; gap: 12px; }
         }
     </style>
 </head>
@@ -233,28 +170,85 @@
 
     <div class="container">
 
-        <!-- BACK BUTTON -->
         <a href="index.html" class="back-link">← Back to Tools</a>
 
-        <!-- HEADER -->
-        <h1>
-            📝 Blog <span>Posts</span>
-        </h1>
-        <div class="subtitle">Tips, guides, and insights about online tools, security, health, and productivity.</div>
+        <h1>📝 Blog <span>Posts</span></h1>
+        <div class="subtitle">Tips, guides, and insights about online tools, security, health, and AI career planning.</div>
 
-        <!-- BLOG POSTS GRID -->
-        <div class="blog-grid" id="blogGrid">
+        <div class="blog-grid">
 
             <!-- ============================================================ -->
-            <!-- BLOG POST 1: Password Generator -->
+            <!-- 🚀 AI CAREER ARTICLES (NEW) -->
             <!-- ============================================================ -->
+
+            <!-- ARTICLE 1 -->
+            <a href="blog/what-is-ai-career-simulator.html" class="blog-card">
+                <span class="category career">🚀 AI Career</span>
+                <h2>What is an AI Career Simulator and How Does It Work?</h2>
+                <p>Discover how AI Career Simulators are transforming career planning. Learn how AI-powered tools help you explore career paths, identify skill gaps, and build personalized roadmaps.</p>
+                <div class="meta">
+                    <span>📅 June 27, 2026</span>
+                    <span>⏱️ 6 min read</span>
+                </div>
+                <span class="read-more">Read More →</span>
+            </a>
+
+            <!-- ARTICLE 2 -->
+            <a href="blog/ai-career-simulator-guide.html" class="blog-card">
+                <span class="category career">🚀 AI Career</span>
+                <h2>How to Use the AI Career Simulator — Step-by-Step Guide</h2>
+                <p>Learn how to use the AI Career Simulator tool. Step-by-step guide to get personalized career recommendations, skill gap analysis, and learning roadmap.</p>
+                <div class="meta">
+                    <span>📅 June 27, 2026</span>
+                    <span>⏱️ 5 min read</span>
+                </div>
+                <span class="read-more">Read More →</span>
+            </a>
+
+            <!-- ARTICLE 3 -->
+            <a href="blog/future-of-ai-career-simulations.html" class="blog-card">
+                <span class="category career">🚀 AI Career</span>
+                <h2>Why AI Career Simulations Are the Future of Career Planning</h2>
+                <p>Discover why AI career simulations are transforming career counseling. Learn how they help students and professionals navigate the future of work.</p>
+                <div class="meta">
+                    <span>📅 June 27, 2026</span>
+                    <span>⏱️ 6 min read</span>
+                </div>
+                <span class="read-more">Read More →</span>
+            </a>
+
+            <!-- ARTICLE 4 -->
+            <a href="blog/skill-gap-analysis-guide.html" class="blog-card">
+                <span class="category career">🚀 AI Career</span>
+                <h2>Skill Gap Analysis — Why It Matters and How to Use It</h2>
+                <p>Learn what skill gap analysis is, why it matters for your career, and how our AI Career Simulator helps you identify and close skill gaps.</p>
+                <div class="meta">
+                    <span>📅 June 27, 2026</span>
+                    <span>⏱️ 5 min read</span>
+                </div>
+                <span class="read-more">Read More →</span>
+            </a>
+
+            <!-- ARTICLE 5 -->
+            <a href="blog/5-reasons-ai-career-simulator.html" class="blog-card">
+                <span class="category career">🚀 AI Career</span>
+                <h2>5 Reasons to Use an AI Career Simulator Today</h2>
+                <p>Here are 5 compelling reasons to use an AI Career Simulator for career planning. Discover how AI-powered tools help you explore careers and build skills.</p>
+                <div class="meta">
+                    <span>📅 June 27, 2026</span>
+                    <span>⏱️ 4 min read</span>
+                </div>
+                <span class="read-more">Read More →</span>
+            </a>
+
+            <!-- ============================================================ -->
+            <!-- 🔐 PASSWORD SECURITY ARTICLES -->
+            <!-- ============================================================ -->
+
             <a href="blog/password-tips.html" class="blog-card">
                 <span class="category pass">🔐 Password</span>
                 <h2>10 Password Security Tips to Keep You Safe Online</h2>
-                <p>
-                    Learn how to create strong passwords, avoid common mistakes, and protect your online accounts.
-                    These simple tips will keep your data secure.
-                </p>
+                <p>Learn how to create strong passwords, avoid common mistakes, and protect your online accounts. These simple tips will keep your data secure.</p>
                 <div class="meta">
                     <span>📅 June 24, 2026</span>
                     <span>⏱️ 5 min read</span>
@@ -262,67 +256,10 @@
                 <span class="read-more">Read More →</span>
             </a>
 
-            <!-- ============================================================ -->
-            <!-- BLOG POST 2: BMI Calculator -->
-            <!-- ============================================================ -->
-            <a href="blog/bmi-guide.html" class="blog-card">
-                <span class="category bmi">⚖️ Health</span>
-                <h2>What is BMI and Why Does It Matter?</h2>
-                <p>
-                    Understand Body Mass Index, its categories, and why it's important for your health.
-                    Learn how to interpret your BMI results.
-                </p>
-                <div class="meta">
-                    <span>📅 June 23, 2026</span>
-                    <span>⏱️ 4 min read</span>
-                </div>
-                <span class="read-more">Read More →</span>
-            </a>
-
-            <!-- ============================================================ -->
-            <!-- BLOG POST 3: Word Counter -->
-            <!-- ============================================================ -->
-            <a href="blog/word-count-seo.html" class="blog-card">
-                <span class="category word">✍️ Writing</span>
-                <h2>Why Word Count Matters for SEO in 2026</h2>
-                <p>
-                    Discover the ideal blog post length, how word count affects search rankings,
-                    and tips for writing high-quality content.
-                </p>
-                <div class="meta">
-                    <span>📅 June 22, 2026</span>
-                    <span>⏱️ 6 min read</span>
-                </div>
-                <span class="read-more">Read More →</span>
-            </a>
-
-            <!-- ============================================================ -->
-            <!-- BLOG POST 4: General -->
-            <!-- ============================================================ -->
-            <a href="blog/top-online-tools.html" class="blog-card">
-                <span class="category general">🛠️ Tools</span>
-                <h2>Top 10 Free Online Tools Everyone Should Bookmark</h2>
-                <p>
-                    A curated list of the best free online tools for productivity, security, health,
-                    and writing. Save time and work smarter.
-                </p>
-                <div class="meta">
-                    <span>📅 June 21, 2026</span>
-                    <span>⏱️ 7 min read</span>
-                </div>
-                <span class="read-more">Read More →</span>
-            </a>
-
-            <!-- ============================================================ -->
-            <!-- BLOG POST 5: Password Generator -->
-            <!-- ============================================================ -->
             <a href="blog/password-manager-vs-generator.html" class="blog-card">
                 <span class="category pass">🔐 Password</span>
                 <h2>Password Manager vs Password Generator — What's the Difference?</h2>
-                <p>
-                    Compare password managers and password generators. Learn which tool is right for you
-                    and how to use them together for maximum security.
-                </p>
+                <p>Compare password managers and password generators. Learn the differences, pros and cons, and which tool is right for you.</p>
                 <div class="meta">
                     <span>📅 June 20, 2026</span>
                     <span>⏱️ 5 min read</span>
@@ -330,67 +267,10 @@
                 <span class="read-more">Read More →</span>
             </a>
 
-            <!-- ============================================================ -->
-            <!-- BLOG POST 6: BMI Calculator -->
-            <!-- ============================================================ -->
-            <a href="blog/bmi-accuracy.html" class="blog-card">
-                <span class="category bmi">⚖️ Health</span>
-                <h2>Is BMI Accurate? Pros and Cons of BMI</h2>
-                <p>
-                    Explore the limitations of BMI and why it's still used as a health indicator.
-                    Learn about alternative measurements and when to use them.
-                </p>
-                <div class="meta">
-                    <span>📅 June 19, 2026</span>
-                    <span>⏱️ 4 min read</span>
-                </div>
-                <span class="read-more">Read More →</span>
-            </a>
-
-            <!-- ============================================================ -->
-            <!-- BLOG POST 7: Word Counter -->
-            <!-- ============================================================ -->
-            <a href="blog/writing-tips-beginners.html" class="blog-card">
-                <span class="category word">✍️ Writing</span>
-                <h2>Top 10 Writing Tips for Beginners</h2>
-                <p>
-                    New to writing? These 10 simple tips will help you write better, faster,
-                    and more effectively. Perfect for bloggers and students.
-                </p>
-                <div class="meta">
-                    <span>📅 June 18, 2026</span>
-                    <span>⏱️ 5 min read</span>
-                </div>
-                <span class="read-more">Read More →</span>
-            </a>
-
-            <!-- ============================================================ -->
-            <!-- BLOG POST 8: General -->
-            <!-- ============================================================ -->
-            <a href="blog/online-safety-guide.html" class="blog-card">
-                <span class="category general">🛠️ Security</span>
-                <h2>How to Stay Safe Online — A Beginner's Guide</h2>
-                <p>
-                    Essential online safety tips for beginners. Learn how to protect your privacy,
-                    avoid scams, and keep your data secure.
-                </p>
-                <div class="meta">
-                    <span>📅 June 17, 2026</span>
-                    <span>⏱️ 6 min read</span>
-                </div>
-                <span class="read-more">Read More →</span>
-            </a>
-
-            <!-- ============================================================ -->
-            <!-- BLOG POST 9: Password Generator -->
-            <!-- ============================================================ -->
             <a href="blog/reuse-passwords.html" class="blog-card">
                 <span class="category pass">🔐 Password</span>
                 <h2>Why You Should Never Reuse Passwords</h2>
-                <p>
-                    Reusing passwords is one of the biggest security risks. Learn why it's dangerous
-                    and how to create unique passwords for every account.
-                </p>
+                <p>Reusing passwords is one of the biggest security risks. Learn why it's dangerous and how to create unique passwords for every account.</p>
                 <div class="meta">
                     <span>📅 June 16, 2026</span>
                     <span>⏱️ 4 min read</span>
@@ -399,18 +279,90 @@
             </a>
 
             <!-- ============================================================ -->
-            <!-- BLOG POST 10: BMI Calculator -->
+            <!-- ⚖️ HEALTH & BMI ARTICLES -->
             <!-- ============================================================ -->
+
+            <a href="blog/bmi-guide.html" class="blog-card">
+                <span class="category bmi">⚖️ Health</span>
+                <h2>What is BMI and Why Does It Matter?</h2>
+                <p>Understand Body Mass Index, its categories, and why it's important for your health. Learn how to interpret your BMI results.</p>
+                <div class="meta">
+                    <span>📅 June 23, 2026</span>
+                    <span>⏱️ 4 min read</span>
+                </div>
+                <span class="read-more">Read More →</span>
+            </a>
+
+            <a href="blog/bmi-accuracy.html" class="blog-card">
+                <span class="category bmi">⚖️ Health</span>
+                <h2>Is BMI Accurate? Pros and Cons of BMI</h2>
+                <p>Explore the limitations of BMI and why it's still used as a health indicator. Learn about alternative measurements and when to use them.</p>
+                <div class="meta">
+                    <span>📅 June 19, 2026</span>
+                    <span>⏱️ 4 min read</span>
+                </div>
+                <span class="read-more">Read More →</span>
+            </a>
+
             <a href="blog/healthy-bmi-tips.html" class="blog-card">
                 <span class="category bmi">⚖️ Health</span>
                 <h2>How to Maintain a Healthy BMI — Practical Tips</h2>
-                <p>
-                    Simple and practical tips to achieve and maintain a healthy BMI.
-                    Diet, exercise, and lifestyle changes that work.
-                </p>
+                <p>Simple and practical tips to achieve and maintain a healthy BMI. Diet, exercise, and lifestyle changes that work.</p>
                 <div class="meta">
                     <span>📅 June 15, 2026</span>
                     <span>⏱️ 5 min read</span>
+                </div>
+                <span class="read-more">Read More →</span>
+            </a>
+
+            <!-- ============================================================ -->
+            <!-- ✍️ WRITING & SEO ARTICLES -->
+            <!-- ============================================================ -->
+
+            <a href="blog/word-count-seo.html" class="blog-card">
+                <span class="category word">✍️ Writing</span>
+                <h2>Why Word Count Matters for SEO in 2026</h2>
+                <p>Discover the ideal blog post length, how word count affects search rankings, and tips for writing high-quality content.</p>
+                <div class="meta">
+                    <span>📅 June 22, 2026</span>
+                    <span>⏱️ 6 min read</span>
+                </div>
+                <span class="read-more">Read More →</span>
+            </a>
+
+            <a href="blog/writing-tips-beginners.html" class="blog-card">
+                <span class="category word">✍️ Writing</span>
+                <h2>Top 10 Writing Tips for Beginners</h2>
+                <p>New to writing? These 10 simple tips will help you write better, faster, and more effectively. Perfect for bloggers and students.</p>
+                <div class="meta">
+                    <span>📅 June 18, 2026</span>
+                    <span>⏱️ 5 min read</span>
+                </div>
+                <span class="read-more">Read More →</span>
+            </a>
+
+            <!-- ============================================================ -->
+            <!-- 🛡️ GENERAL / SECURITY ARTICLES -->
+            <!-- ============================================================ -->
+
+            <a href="blog/top-online-tools.html" class="blog-card">
+                <span class="category general">🛠️ Tools</span>
+                <h2>Top 10 Free Online Tools Everyone Should Bookmark</h2>
+                <p>A curated list of the best free online tools for productivity, security, health, and writing. Save time and work smarter.</p>
+                <div class="meta">
+                    <span>📅 June 21, 2026</span>
+                    <span>⏱️ 7 min read</span>
+                </div>
+                <span class="read-more">Read More →</span>
+            </a>
+
+            <a href="blog/online-safety-guide.html" class="blog-card">
+                <span class="category general">🛡️ Security</span>
+                <h2>How to Stay Safe Online — A Beginner's Guide</h2>
+                <p>Essential online safety tips for beginners. Learn how to protect your privacy, avoid scams, and keep your data secure.</p>
+                <div class="meta">
+                    <span>📅 June 17, 2026</span>
+                    <span>⏱️ 6 min read</span>
                 </div>
                 <span class="read-more">Read More →</span>
             </a>
@@ -419,11 +371,11 @@
 
         <!-- FOOTER -->
         <div class="footer">
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
-            <a href="privacy-policy.html">Privacy Policy</a>
-            <a href="blog.html">Blog</a>
+            <a href="index.html">🏠 Home</a>
+            <a href="about.html">ℹ️ About</a>
+            <a href="contact.html">📬 Contact</a>
+            <a href="privacy-policy.html">🔒 Privacy Policy</a>
+            <a href="blog.html">📝 Blog</a>
         </div>
 
     </div>
