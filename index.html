@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ToolsNest — Free Online Tools: Password Generator, BMI, Word Counter, AI Career Simulator</title>
-    <meta name="description" content="Free online tools at ToolsNest: Password Generator, BMI Calculator, Word Counter, and AI Career Simulator. Fast, secure, and mobile-friendly." />
+    <title>ToolsNest — Free Online Tools</title>
+    <meta name="description" content="Free online tools at ToolsNest: Password Generator, BMI Calculator, Word Counter, AI Career Simulator, AI Face Analyzer and more. Fast, secure, and mobile-friendly." />
 
     <!-- ========== FAVICON ========== -->
-        <link rel="icon" type="image/x-icon" href="favicon.ico" />
-        <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
-        <link rel="apple-touch-icon" href="apple-touch-icon.png" />
-        <link rel="manifest" href="site.webmanifest" />
-    </head>
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <link rel="manifest" href="site.webmanifest" />
+
     <!-- ========== OPEN GRAPH / SOCIAL MEDIA TAGS ========== -->
     <meta property="og:title" content="ToolsNest — Free Online Tools" />
-    <meta property="og:description" content="Password Generator, BMI Calculator, Word Counter, and AI Career Simulator — all free and secure. No sign-up required." />
+    <meta property="og:description" content="Password Generator, BMI Calculator, Word Counter, AI Career Simulator, and AI Face Analyzer — all free and secure." />
     <meta property="og:image" content="https://toolsnest.online/logo.png" />
     <meta property="og:url" content="https://toolsnest.online/" />
     <meta property="og:type" content="website" />
@@ -23,11 +23,40 @@
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="ToolsNest — Free Online Tools" />
-    <meta name="twitter:description" content="Password Generator, BMI Calculator, Word Counter, and AI Career Simulator — all free and secure." />
+    <meta name="twitter:description" content="Password Generator, BMI Calculator, Word Counter, AI Career Simulator, and AI Face Analyzer — all free and secure." />
     <meta name="twitter:image" content="https://toolsnest.online/logo.png" />
 
     <style>
-        /* ---------- RESET & BASE ---------- */
+        /* ================================================================
+                   DARK THEME
+                   ================================================================ */
+        :root {
+            --bg-primary: #0b1120;
+            --bg-secondary: #1a2332;
+            --bg-card: #1e293b;
+            --bg-input: #0f172a;
+            --border-color: #334155;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --text-body: #cbd5e1;
+            --accent-blue: #3b82f6;
+            --accent-purple: #8b5cf6;
+            --accent-green: #22c55e;
+            --accent-orange: #f59e0b;
+            --accent-red: #ef4444;
+            --shadow: 0 25px 50px -8px rgba(0, 0, 0, 0.8);
+            --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.4);
+            --radius: 16px;
+            --radius-sm: 10px;
+            --radius-lg: 24px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --gradient-main: linear-gradient(135deg, #3b82f6, #8b5cf6);
+        }
+
+        /* ================================================================
+                   RESET & BASE
+                   ================================================================ */
         * {
             margin: 0;
             padding: 0;
@@ -36,7 +65,8 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(145deg, #0b1120 0%, #1a2332 100%);
+            background: var(--bg-primary);
+            color: var(--text-primary);
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -44,13 +74,14 @@
             padding: 30px 20px;
         }
 
-        /* ---------- CONTAINER ---------- */
         .container {
             max-width: 1100px;
             width: 100%;
         }
 
-        /* ---------- HEADER ---------- */
+        /* ================================================================
+                   HEADER
+                   ================================================================ */
         .header {
             text-align: center;
             margin-bottom: 48px;
@@ -71,21 +102,21 @@
         }
 
         .header h1 {
-            color: #f1f5f9;
+            color: var(--text-primary);
             font-size: 42px;
             font-weight: 800;
             letter-spacing: -0.5px;
         }
 
         .header h1 span {
-            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            background: var(--gradient-main);
             padding: 4px 16px;
             border-radius: 14px;
             color: #fff;
         }
 
         .header p {
-            color: #94a3b8;
+            color: var(--text-secondary);
             font-size: 18px;
             margin-top: 12px;
             max-width: 550px;
@@ -93,7 +124,9 @@
             margin-right: auto;
         }
 
-        /* ---------- NAVIGATION ---------- */
+        /* ================================================================
+                   NAVIGATION
+                   ================================================================ */
         .nav-links {
             display: flex;
             justify-content: center;
@@ -103,49 +136,51 @@
         }
 
         .nav-links a {
-            color: #94a3b8;
+            color: var(--text-secondary);
             text-decoration: none;
             font-size: 15px;
             font-weight: 500;
             transition: 0.3s;
             padding: 6px 14px;
             border-radius: 8px;
-            background: #1e293b;
-            border: 1px solid #334155;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
         }
 
         .nav-links a:hover {
-            color: #f1f5f9;
-            border-color: #8b5cf6;
-            background: #0f172a;
+            color: var(--text-primary);
+            border-color: var(--accent-purple);
+            background: var(--bg-input);
         }
 
         .nav-links a.active {
-            color: #f1f5f9;
-            border-color: #8b5cf6;
-            background: #0f172a;
+            color: var(--text-primary);
+            border-color: var(--accent-purple);
+            background: var(--bg-input);
         }
 
-        /* ---------- TOOLS GRID (4 COLUMNS) ---------- */
+        /* ================================================================
+                   TOOLS GRID
+                   ================================================================ */
         .tools-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 24px;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
             margin-bottom: 40px;
         }
 
-        /* ---------- TOOL CARD ---------- */
         .tool-card {
-            background: #1e293b;
+            background: var(--bg-card);
             border-radius: 24px;
-            padding: 28px 20px 24px;
-            border: 1px solid #334155;
+            padding: 24px 16px 20px;
+            border: 1px solid var(--border-color);
             text-decoration: none;
             color: inherit;
             transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             position: relative;
             overflow: hidden;
             display: block;
+            box-shadow: var(--shadow-sm);
         }
 
         .tool-card::before {
@@ -155,15 +190,15 @@
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            background: var(--gradient-main);
             opacity: 0;
             transition: opacity 0.4s ease;
         }
 
         .tool-card:hover {
             transform: translateY(-10px);
-            border-color: #475569;
-            box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.6);
+            border-color: var(--accent-purple);
+            box-shadow: var(--shadow);
         }
 
         .tool-card:hover::before {
@@ -175,95 +210,110 @@
         }
 
         .tool-icon {
-            font-size: 42px;
-            margin-bottom: 12px;
+            font-size: 36px;
+            margin-bottom: 10px;
             display: block;
         }
 
         .tool-card h2 {
-            color: #f1f5f9;
-            font-size: 20px;
+            color: var(--text-primary);
+            font-size: 17px;
             font-weight: 700;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
         .tool-card p {
-            color: #94a3b8;
-            font-size: 14px;
+            color: var(--text-secondary);
+            font-size: 13px;
             line-height: 1.5;
-            margin-bottom: 14px;
+            margin-bottom: 10px;
         }
 
         .tool-tag {
             display: inline-block;
-            padding: 4px 14px;
+            padding: 3px 12px;
             border-radius: 30px;
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 600;
-            background: #334155;
-            color: #cbd5e1;
+            background: var(--bg-input);
+            color: var(--text-secondary);
             letter-spacing: 0.3px;
+            border: 1px solid var(--border-color);
         }
 
-        /* Individual card accent colors */
         .tool-card.pass .tool-tag {
-            background: #3b82f6;
+            background: var(--accent-blue);
             color: #fff;
+            border-color: var(--accent-blue);
         }
         .tool-card.pass::before {
-            background: #3b82f6;
+            background: var(--accent-blue);
         }
 
         .tool-card.bmi .tool-tag {
-            background: #22c55e;
+            background: var(--accent-green);
             color: #fff;
+            border-color: var(--accent-green);
         }
         .tool-card.bmi::before {
-            background: #22c55e;
+            background: var(--accent-green);
         }
 
         .tool-card.word .tool-tag {
-            background: #8b5cf6;
+            background: var(--accent-purple);
             color: #fff;
+            border-color: var(--accent-purple);
         }
         .tool-card.word::before {
-            background: #8b5cf6;
+            background: var(--accent-purple);
         }
 
         .tool-card.career .tool-tag {
-            background: #f59e0b;
+            background: var(--accent-orange);
             color: #fff;
+            border-color: var(--accent-orange);
         }
         .tool-card.career::before {
-            background: #f59e0b;
+            background: var(--accent-orange);
+        }
+
+        .tool-card.face .tool-tag {
+            background: var(--accent-red);
+            color: #fff;
+            border-color: var(--accent-red);
+        }
+        .tool-card.face::before {
+            background: var(--accent-red);
         }
 
         .tool-arrow {
             display: inline-block;
-            margin-top: 6px;
-            color: #64748b;
-            font-size: 18px;
+            margin-top: 4px;
+            color: var(--text-muted);
+            font-size: 16px;
             transition: 0.3s ease;
         }
 
         .tool-card:hover .tool-arrow {
-            color: #f1f5f9;
+            color: var(--text-primary);
             transform: translateX(6px);
         }
 
-        /* ---------- FEATURES ---------- */
+        /* ================================================================
+                   FEATURES
+                   ================================================================ */
         .features {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 20px;
             margin-top: 16px;
             padding-top: 32px;
-            border-top: 1px solid #1e293b;
+            border-top: 1px solid var(--border-color);
         }
 
         .feature-item {
             text-align: center;
-            color: #94a3b8;
+            color: var(--text-secondary);
             font-size: 14px;
         }
 
@@ -274,80 +324,88 @@
         }
 
         .feature-item strong {
-            color: #e2e8f0;
+            color: var(--text-primary);
             display: block;
             font-size: 15px;
         }
 
-        /* ---------- FOOTER ---------- */
+        /* ================================================================
+                   FOOTER
+                   ================================================================ */
         .footer {
             text-align: center;
-            color: #475569;
+            color: var(--text-muted);
             font-size: 13px;
             margin-top: 40px;
             padding-top: 24px;
-            border-top: 1px solid #1e293b;
+            border-top: 1px solid var(--border-color);
         }
 
         .footer a {
-            color: #64748b;
+            color: var(--text-muted);
             text-decoration: none;
             margin: 0 10px;
             transition: 0.3s;
         }
 
         .footer a:hover {
-            color: #94a3b8;
+            color: var(--text-primary);
         }
 
-        /* ---------- RESPONSIVE ---------- */
-        @media (max-width: 920px) {
+        /* ================================================================
+                   RESPONSIVE
+                   ================================================================ */
+        @media (max-width: 1024px) {
+            .tools-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 18px;
+            }
+        }
+
+        @media (max-width: 768px) {
             .tools-grid {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 20px;
+                gap: 16px;
             }
             .header h1 {
-                font-size: 32px;
+                font-size: 30px;
             }
             .features {
                 grid-template-columns: 1fr 1fr;
-                gap: 16px;
+                gap: 14px;
             }
             .logo img {
-                max-height: 55px;
+                max-height: 50px;
             }
         }
 
-        @media (max-width: 520px) {
-            .header h1 {
-                font-size: 26px;
-            }
-            .header p {
-                font-size: 15px;
-            }
+        @media (max-width: 500px) {
             .tools-grid {
                 grid-template-columns: 1fr;
-                gap: 18px;
+                gap: 14px;
+            }
+            .header h1 {
+                font-size: 24px;
+            }
+            .header p {
+                font-size: 14px;
             }
             .tool-card {
-                padding: 24px 18px 22px;
-            }
-            .tool-card h2 {
-                font-size: 20px;
+                padding: 20px 16px 18px;
             }
             .features {
                 grid-template-columns: 1fr;
-                gap: 12px;
+                gap: 10px;
             }
             .nav-links {
-                gap: 10px;
+                gap: 8px;
             }
             .nav-links a {
                 font-size: 13px;
                 padding: 4px 10px;
             }
             .logo img {
-                max-height: 45px;
+                max-height: 40px;
             }
         }
     </style>
@@ -376,10 +434,11 @@
                 <a href="about.html">ℹ️ About</a>
                 <a href="contact.html">📬 Contact</a>
             </div>
+
         </div>
 
         <!-- ============================================================ -->
-        <!-- TOOLS GRID — 4 TOOLS -->
+        <!-- TOOLS GRID — 5 TOOLS -->
         <!-- ============================================================ -->
         <div class="tools-grid">
 
@@ -387,7 +446,7 @@
             <a href="password-generator.html" class="tool-card pass">
                 <span class="tool-icon">🔐</span>
                 <h2>Password Generator</h2>
-                <p>Generate strong, secure passwords instantly. Customize length and character types.</p>
+                <p>Generate strong, secure passwords instantly.</p>
                 <span class="tool-tag">🔒 Secure</span>
                 <span class="tool-arrow">→</span>
             </a>
@@ -396,7 +455,7 @@
             <a href="bmi-calculator.html" class="tool-card bmi">
                 <span class="tool-icon">⚖️</span>
                 <h2>BMI Calculator</h2>
-                <p>Calculate your Body Mass Index and check your health category instantly.</p>
+                <p>Calculate your Body Mass Index and health category.</p>
                 <span class="tool-tag">💪 Health</span>
                 <span class="tool-arrow">→</span>
             </a>
@@ -405,17 +464,26 @@
             <a href="word-counter.html" class="tool-card word">
                 <span class="tool-icon">📝</span>
                 <h2>Word Counter</h2>
-                <p>Count words, characters, sentences, paragraphs, and reading time.</p>
+                <p>Count words, characters, sentences, and reading time.</p>
                 <span class="tool-tag">✍️ Writing</span>
                 <span class="tool-arrow">→</span>
             </a>
 
-            <!-- TOOL 4: AI Career Simulator (NEW) -->
+            <!-- TOOL 4: AI Career Simulator -->
             <a href="ai-career-simulator.html" class="tool-card career">
                 <span class="tool-icon">🚀</span>
                 <h2>AI Career Simulator</h2>
-                <p>Discover your ideal career path, identify skill gaps, and get a personalized learning roadmap.</p>
+                <p>Discover your ideal career path and skill gaps.</p>
                 <span class="tool-tag">🤖 AI-Powered</span>
+                <span class="tool-arrow">→</span>
+            </a>
+
+            <!-- TOOL 5: AI Face Analyzer -->
+            <a href="face-analyzer.html" class="tool-card face">
+                <span class="tool-icon">🤵</span>
+                <h2>AI Face Analyzer</h2>
+                <p>Upload photo — get attractiveness score &amp; personality report.</p>
+                <span class="tool-tag">🧠 AI Analysis</span>
                 <span class="tool-arrow">→</span>
             </a>
 
